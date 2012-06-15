@@ -1,1 +1,30 @@
-Using MapReduce program,this project is to calulate the influence value of some famous person's weibo simply.
+Using MapReduce program, CalcInfluenceValue is to calulate the influence value of some famous person's weibo simply.
+
+Usage:
+Upload the jar file to your master,execute below command:
+$ bin/hadoop jar CalcInfluenceValue.jar CalcInfluenceValue input output outputsort
+
+Example:
+The dataset folder collect all 99 famous person's weibo contents,and the Result folder is output of hadoop execute;
+Front result show below:
+1 1804.1588785046729  陈翔橙
+2 1742.9535864978902  蔡康永
+3 1734.972067039106   韩庚
+4 1701.4814814814815  李敏镐
+5 1676.2402088772847  周笔畅
+6 1414.1224489795916  刘忻
+7 1349.032258064516   阿信
+8 1344.966313763234   张杰
+9 1337.3964497041418  安妮宝贝
+10 1248.6315789473683  张小娴
+11 1177.2021182700794  杨幂
+12 965.1910828025477   加措活佛-慈爱基金
+13 946.2032085561498   井柏然
+14 925.7338622430581   羅志祥
+15 830.6059831245205   谢娜
+16 811.2866817155756   乔任梁
+17 807.1512309495897   小S
+18 762.4768518518517   苍井空
+19 737.4240082431736   吴奇隆
+20 704.2791681353543   何炅
+
