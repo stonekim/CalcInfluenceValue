@@ -2,9 +2,7 @@
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -30,7 +28,7 @@ public class CalcInfluenceValue {
     job.setReducerClass(CalcInfluenceReducer.class);
     job.setMapOutputKeyClass(Text.class);
     job.setMapOutputValueClass(Text.class);
-    job.setOutputKeyClass(IntWritable.class);
+    job.setOutputKeyClass(DoubleWritable.class);
     job.setOutputValueClass(Text.class);
     TextInputFormat.addInputPath(job, new Path(otherArgs[0]));
     SequenceFileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));
@@ -39,9 +37,9 @@ public class CalcInfluenceValue {
     sortJob.setJarByClass(CalcInfluenceValue.class);
     sortJob.setMapperClass(SortValueMapper.class);
     sortJob.setReducerClass(Reducer.class);
-    sortJob.setOutputKeyClass(LongWritable.class);
+    sortJob.setOutputKeyClass(DoubleWritable.class);
     sortJob.setOutputValueClass(Text.class);
-    sortJob.setSortComparatorClass(LongWritable.DecreasingComparator.class);
+    sortJob.setSortComparatorClass(KeyComparator.class);
     TextInputFormat.addInputPath(sortJob, new Path(otherArgs[1]+"/part-r-00000"));
     FileOutputFormat.setOutputPath(sortJob, new Path(otherArgs[2]));
     }
